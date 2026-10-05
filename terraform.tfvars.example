@@ -1,0 +1,56 @@
+# Terraform AWS RDS Web Application
+# Example configuration
+#
+# Copy this file to terraform.tfvars and update values as required.
+# Never commit terraform.tfvars because it may contain environment-specific
+# or sensitive configuration.
+
+# ---------------------------------------------------------
+# General Settings
+# ---------------------------------------------------------
+
+project_name = "terraform-rds-webapp"
+environment  = "dev"
+aws_region   = "us-east-1"
+
+
+# ---------------------------------------------------------
+# Network Settings
+# ---------------------------------------------------------
+
+vpc_cidr             = "10.0.0.0/16"
+public_subnet_cidr   = "10.0.1.0/24"
+private_subnet_cidrs = ["10.0.2.0/24", "10.0.3.0/24"]
+
+
+# ---------------------------------------------------------
+# EC2 Settings
+# ---------------------------------------------------------
+
+ec2_instance_type = "t3.micro"
+
+# SSH access
+#
+# IMPORTANT:
+# Replace 0.0.0.0/0 with YOUR PUBLIC IP before deployment.
+#
+# Example:
+# ssh_allowed_cidr = "49.204.123.45/32"
+#
+# /32 means only that one IP can SSH into EC2.
+# Do NOT enter the EC2 public IP here.
+ssh_allowed_cidr = "0.0.0.0/0"
+
+
+# ---------------------------------------------------------
+# RDS Settings
+# ---------------------------------------------------------
+
+db_name              = "webappdb"
+db_username          = "admin"
+db_instance_class    = "db.t3.micro"
+db_allocated_storage = 10
+db_engine_version    = "8.0"
+
+# Database password is automatically generated and stored
+# in AWS Secrets Manager.
