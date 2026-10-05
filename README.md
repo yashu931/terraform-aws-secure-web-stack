@@ -32,8 +32,23 @@ The EC2 instance is publicly accessible for the web application, while the RDS d
 
 # 🏗️ Architecture
 
-```text
-                      <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/d4447bb3-3a81-4728-bba6-27d92fb3511c" />
+This project uses a modular AWS architecture provisioned entirely through Terraform. The web application runs on an EC2 instance in a public subnet, while the MySQL database is deployed securely in private subnets.
+
+![Terraform AWS Architecture](diagrams/aws-architecture.png)
+
+### Architecture Components
+
+| Component | Purpose |
+|---|---|
+| **Amazon VPC** | Isolated network for the application |
+| **Public Subnet** | Hosts the EC2 web server |
+| **EC2** | Runs the Flask web application |
+| **Internet Gateway** | Provides internet connectivity |
+| **Private Subnets** | Isolate the database tier |
+| **Amazon RDS MySQL** | Managed relational database |
+| **Security Groups** | Control application and database traffic |
+| **AWS Secrets Manager** | Securely stores database credentials |
+| **Terraform Modules** | Organize infrastructure into reusable components |
 
 ```
 
